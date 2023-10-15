@@ -24,7 +24,7 @@ export const Navbar = () => {
       )}
     >
       <Logo />
-      <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
+      <div className="md:ml-auto justify-between md:justify-end w-full flex items-center gap-x-2">
         {isLoading && <Spinner />}
         {!isAuthenticated && !isLoading && (
           <>
@@ -40,7 +40,12 @@ export const Navbar = () => {
         )}
         {isAuthenticated && !isLoading && (
           <>
-            <Button variant="ghost" size="sm" asChild>
+            <Button
+              className="hidden md:flex"
+              variant="ghost"
+              size="sm"
+              asChild
+            >
               <Link href="/documents">Enter Jotion</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
