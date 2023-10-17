@@ -58,7 +58,7 @@ export const UserItem = () => {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          asChild
+          // asChild
           className="w-full cursor-pointer text-muted-foreground"
         >
           <SignOutButton>Log out</SignOutButton>
@@ -67,3 +67,6 @@ export const UserItem = () => {
     </DropdownMenu>
   );
 };
+
+// Fixed error in select component:
+// https://github.com/shadcn-ui/ui/issues/373
