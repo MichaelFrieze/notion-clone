@@ -67,6 +67,3 @@ export const UserItem = () => {
     </DropdownMenu>
   );
 };
-
-// Fixed error in select component:
-// https://github.com/shadcn-ui/ui/issues/373
