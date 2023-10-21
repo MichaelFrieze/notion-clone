@@ -2,6 +2,9 @@
 
 import { Id } from "@/convex/_generated/dataModel";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { Toolbar } from "@/components/toolbar";
 
 interface DocumentIdPageProps {
   params: {
@@ -10,6 +13,10 @@ interface DocumentIdPageProps {
 }
 
 const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
+  const document = useQuery(api.documents.getById, {
+    documentId: params.documentId,
+  });
+
   if (document === undefined) {
     return (
       <div>
@@ -31,7 +38,9 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
 
   return (
     <div className="pb-40">
-      <div className="mx-auto md:max-w-3xl lg:max-w-4xl"></div>
+      <div className="mx-auto md:max-w-3xl lg:max-w-4xl">
+        <Toolbar initialData={document} />
+      </div>
     </div>
   );
 };
