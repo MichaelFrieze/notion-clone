@@ -15,9 +15,12 @@ import { IconPicker } from "./icon-picker";
 interface ToolbarProps {
   initialData: Doc<"documents">;
   preview?: boolean;
-}
+};
 
-export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
+export const Toolbar = ({
+  initialData,
+  preview
+}: ToolbarProps) => {
   const inputRef = useRef<ElementRef<"textarea">>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(initialData.title);
@@ -43,11 +46,13 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
     setValue(value);
     update({
       id: initialData._id,
-      title: value || "Untitled",
+      title: value || "Untitled"
     });
   };
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const onKeyDown = (
+    event: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
     if (event.key === "Enter") {
       event.preventDefault();
       disableInput();
@@ -63,22 +68,22 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
 
   const onRemoveIcon = () => {
     removeIcon({
-      id: initialData._id,
-    });
-  };
+      id: initialData._id
+    })
+  }
 
   return (
-    <div className="group relative pl-[54px]">
+    <div className="pl-[54px] group relative">
       {!!initialData.icon && !preview && (
-        <div className="group/icon flex items-center gap-x-2 pt-6">
+        <div className="flex items-center gap-x-2 group/icon pt-6">
           <IconPicker onChange={onIconSelect}>
-            <p className="text-6xl transition hover:opacity-75">
+            <p className="text-6xl hover:opacity-75 transition">
               {initialData.icon}
             </p>
           </IconPicker>
           <Button
             onClick={onRemoveIcon}
-            className="rounded-full text-xs text-muted-foreground opacity-0 transition group-hover/icon:opacity-100"
+            className="rounded-full opacity-0 group-hover/icon:opacity-100 transition text-muted-foreground text-xs"
             variant="outline"
             size="icon"
           >
@@ -87,17 +92,19 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
         </div>
       )}
       {!!initialData.icon && preview && (
-        <p className="pt-6 text-6xl">{initialData.icon}</p>
+        <p className="text-6xl pt-6">
+          {initialData.icon}
+        </p>
       )}
-      <div className="flex items-center gap-x-1 py-4 opacity-0 group-hover:opacity-100">
+      <div className="opacity-0 group-hover:opacity-100 flex items-center gap-x-1 py-4">
         {!initialData.icon && !preview && (
           <IconPicker asChild onChange={onIconSelect}>
             <Button
-              className="text-xs text-muted-foreground"
+              className="text-muted-foreground text-xs"
               variant="outline"
               size="sm"
             >
-              <Smile className="mr-2 h-4 w-4" />
+              <Smile className="h-4 w-4 mr-2" />
               Add icon
             </Button>
           </IconPicker>
@@ -105,11 +112,11 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
         {!initialData.coverImage && !preview && (
           <Button
             onClick={coverImage.onOpen}
-            className="text-xs text-muted-foreground"
+            className="text-muted-foreground text-xs"
             variant="outline"
             size="sm"
           >
-            <ImageIcon className="mr-2 h-4 w-4" />
+            <ImageIcon className="h-4 w-4 mr-2" />
             Add cover
           </Button>
         )}
@@ -121,16 +128,16 @@ export const Toolbar = ({ initialData, preview }: ToolbarProps) => {
           onKeyDown={onKeyDown}
           value={value}
           onChange={(e) => onInput(e.target.value)}
-          className="resize-none break-words bg-transparent text-5xl font-bold text-[#3F3F3F] outline-none dark:text-[#CFCFCF]"
+          className="text-5xl bg-transparent font-bold break-words outline-none text-[#3F3F3F] dark:text-[#CFCFCF] resize-none"
         />
       ) : (
         <div
           onClick={enableInput}
-          className="break-words pb-[11.5px] text-5xl font-bold text-[#3F3F3F] outline-none dark:text-[#CFCFCF]"
+          className="pb-[11.5px] text-5xl font-bold break-words outline-none text-[#3F3F3F] dark:text-[#CFCFCF]"
         >
           {initialData.title}
         </div>
       )}
     </div>
-  );
-};
+  )
+}

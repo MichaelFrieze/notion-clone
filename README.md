@@ -1,5 +1,3 @@
-[I am following this tutorial](https://youtu.be/0OaDyjB9Ib8?si=a03sxSxs5Bvd--ZL&t=20740)
-
 Key Features:
 
 - Real-time database 🔗

@@ -8,6 +8,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -58,7 +59,7 @@ export const UserItem = () => {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          // asChild
+          asChild
           className="w-full cursor-pointer text-muted-foreground"
         >
           <SignOutButton>Log out</SignOutButton>
